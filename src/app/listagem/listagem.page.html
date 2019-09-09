@@ -9,7 +9,9 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
+<!-- 
      <ion-list>
     <ion-item *ngFor="let item of itens">
       <ion-icon [name]="item.icon" slot="start"></ion-icon>
@@ -42,5 +44,21 @@
  <br>
  <br>
 
+
+</ion-content>
+-->
+
+<ion-card *ngFor="let item of itens">
+		<ion-card-header>
+			<img src="https://abrilquatrorodas.files.wordpress.com/2018/11/p90331098_highres_bmw-vision-inext-11-e1543429340433.jpg?quality=70&strip=info&w=1024&h=682">
+	      <ion-card-subtitle>{{item.titulo}}</ion-card-subtitle>
+	    </ion-card-header>
+	    <ion-card-content>
+	      <p>
+	        {{item.descricao}}
+	      </p>
+	      <ion-button color="primary">Acessar</ion-button>
+	    </ion-card-content>
+	</ion-card>
 
 </ion-content>
