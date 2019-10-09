@@ -23,9 +23,16 @@ export class FormularioPage implements OnInit {
   	 const alert = await this.alertController.create({
       header: 'Alert',
       subHeader: 'Subtitle',
-      message: 'This is an alert message.',
+      message: this.dadosPessoa.email,
       buttons: ['OK']
     });
-  }
 
+  	 await alert.present();
+
+  	 this.apiService.sendPostRequest(this.dadosPessoa).subscribe((data)=>{
+  	 	console.log(data);
+  	 }, error => {
+  	 	console.log(error);
+  	 });
+  }
 }
