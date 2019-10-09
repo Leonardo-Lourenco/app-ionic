@@ -25,6 +25,11 @@ export class AppComponent {
       title: 'Listagem',
       url: '/listagem',
       icon: 'list'
+    },
+    {
+      title: 'Formulario',
+      url: '/formulario',
+      icon: 'list'
     }
   ];
 

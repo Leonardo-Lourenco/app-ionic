@@ -11,54 +11,28 @@
 
 
 <ion-content>
-<!-- 
-     <ion-list>
-    <ion-item *ngFor="let item of itens">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.titulo}}
-      <div class="item-note" slot="end">
-        {{item.descricao}}
-      </div>
-    </ion-item>
-  </ion-list>
 
- <br>
- <br>
-  <div class = "card">
-   <div class = "item item-avatar">
-      <img src = "https://timedotcom.files.wordpress.com/2017/08/coffee.jpg?quality=85">
-
-      <h2>Oláááaáá</h2>
-   </div>
-
-   <div class = "item item-body">
-      <img class = "full-image" src = "my-image.png">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eget 
-      pharetra tortor. Proin quis eros imperdiet, facilisis nisi in, tincidunt orci. 
-      Nam tristique elit massa, quis faucibus augue finibus ac.
-     <br>
-     <br>
-      <ion-button color="primary">Read More</ion-button>
-   </div>
-</div>
- <br>
- <br>
-
-
-</ion-content>
--->
-
-<ion-card *ngFor="let item of itens">
+<ion-card *ngFor="let post of posts">
+ <ion-img src="{{ post.avatar }}"></ion-img>
 		<ion-card-header>
-			<img src="https://abrilquatrorodas.files.wordpress.com/2018/11/p90331098_highres_bmw-vision-inext-11-e1543429340433.jpg?quality=70&strip=info&w=1024&h=682">
-	      <ion-card-subtitle>{{item.titulo}}</ion-card-subtitle>
+  
+
+	    <ion-card-subtitle>{{ post.first_name}}  {{ post.last_name }}</ion-card-subtitle>
 	    </ion-card-header>
 	    <ion-card-content>
 	      <p>
-	        {{item.descricao}}
+	        {{ post.email }}
 	      </p>
-	      <ion-button color="primary">Acessar</ion-button>
+	      <ion-button ion-button fill="outline" href="https://www.google.com" large>Read More
+        </ion-button>
 	    </ion-card-content>
 	</ion-card>
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> 
 
 </ion-content>

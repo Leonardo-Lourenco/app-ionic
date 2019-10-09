@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Formulario 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form (ngSubmit)="formSubmit()">
+
+  	<ion-item>
+	  	<ion-label>E-Mail</ion-label>
+	  	<ion-input type="email" [(ngModel)] = "dadosPessoa.email"></ion-input>
+  	</ion-item>
+
+  	<ion-item>
+	  	<ion-label>Nome</ion-label>
+	  	<ion-input type="text" [(ngModel)] = "dadosPessoa.nome"></ion-input>
+  	</ion-item>
+
+  	<ion-item>
+	  	<ion-label>Sobre Nome</ion-label>
+	  	<ion-input type="text" [(ngModel)] = "dadosPessoa.sobrenome"></ion-input>
+  	</ion-item>
+
+  	<ion-button color="primary" type="submit">Enviar</ion-button>
+ 
+
+  </form>
+
+</ion-content>

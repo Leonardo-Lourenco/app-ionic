@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-listagem',
@@ -8,19 +9,36 @@ import { Component, OnInit } from '@angular/core';
 
 export class ListagemPage implements OnInit {
 
-public itens: Array<{ titulo: string; descricao: string}> = [];
+public itens: Array<{ titulo: string; descricao: string}> = []
+public posts;
+public page;
+public total_page;
 
-  constructor() {
+  constructor(private apiService: ApiService) {
+    this.page = 1;
 
-  	for (let i = 0; i < 5; i++) {
-	  	let objeto = {
-	        titulo: 'Elemento ' + (i+1),
-	        descricao: 'This is item #' + (i+1)
-	    }
-  		this.itens.push(objeto);
-    }
+  	this.apiService.getPosts(this.page).subscribe((data:any)=>{
+  		console.log(data);
+  		this.posts = data.data; 
+  		//['data']['children'];
+  	});
 
    }
+
+   loadMoreData(event) {
+
+      this.page++;
+      this.apiService.getPosts(this.page).subscribe((data:any)=>{
+      //console.log(data);
+      this.posts =  this.posts.concat(data.data) ; 
+      event.target.complete();
+
+      if (this.total_page == this.page) {
+        event.target.disabled = true;
+      }
+
+     });
+  }
 
   ngOnInit() {
   }
