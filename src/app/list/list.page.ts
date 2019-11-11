@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-list',
   templateUrl: 'list.page.html',
@@ -22,12 +23,14 @@ export class ListPage implements OnInit {
   public items: Array<{ title: string; note: string; icon: string }> = [];
   constructor() {
     for (let i = 0; i < 5; i++) {
-      this.items.push({
-        title: 'Item ' + (i+1),
+      this.items.push(
+      {
+        title: 'Elemento ' + (i+1),
         note: 'This is item #' + (i+1),
         //icon: this.icons[Math.floor(Math.random() * this.icons.length)]
-        icon: this.icons[i]
-      });
+        icon: this.icons[i]  //Manter a lista em ordem
+      }
+      );
     }
   }
 

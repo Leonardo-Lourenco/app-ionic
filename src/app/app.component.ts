@@ -16,20 +16,21 @@ export class AppComponent {
       url: '/home',
       icon: 'home'
     },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
+    
     {
       title: 'Listagem',
       url: '/listagem',
       icon: 'list'
     },
     {
-      title: 'Formulario',
+      title: 'Formulário',
       url: '/formulario',
-      icon: 'list'
+      icon: 'archive'
+    },
+    {
+      title: 'About',
+      url: '/about',
+      icon: 'help-circle-outline'
     }
   ];
 

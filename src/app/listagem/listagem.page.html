@@ -2,37 +2,43 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Listagem
-    </ion-title>
+    </ion-buttons>      
+    <ion-title>listagem</ion-title>
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
 
-<ion-card *ngFor="let post of posts">
- <ion-img src="{{ post.avatar }}"></ion-img>
-		<ion-card-header>
-  
+    <ion-card *ngFor="let post of posts">
+      <ion-img src="{{post.avatar}}"></ion-img>
+      <ion-card-header>
+        <ion-card-title>{{post.first_name}} {{post.last_name}}
+        </ion-card-title>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <p>
+          {{post.email}}
+        </p>
 
-	    <ion-card-subtitle>{{ post.first_name}}  {{ post.last_name }}</ion-card-subtitle>
-	    </ion-card-header>
-	    <ion-card-content>
-	      <p>
-	        {{ post.email }}
-	      </p>
-	      <ion-button ion-button fill="outline" href="https://www.google.com" large>Read More
-        </ion-button>
-	    </ion-card-content>
-	</ion-card>
+        <ion-button ion-button expand="block" color="dark" (click)="presentModal(post)" large>Leia</ion-button>
 
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+        <ion-button ion-button  expand="block"  large  color="success" click)="atualizarItem(post)"   >Atualizar</ion-button>
+
+
+        <ion-button ion-button expand="block" color="danger" click)="deletarItem(post)" large>Delete</ion-button>
+
+
+
+      </ion-card-content>
+    </ion-card>
+
+  <ion-infinite-scroll treshold="100px" (ionInfinite) = "loadMoreData($event)">
     <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="Loading more data...">
+    loadingSpinner="bubbles"
+    loadingText="Loading more data...">
     </ion-infinite-scroll-content>
-  </ion-infinite-scroll> 
+  </ion-infinite-scroll>
+
 
 </ion-content>
