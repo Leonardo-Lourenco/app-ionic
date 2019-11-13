@@ -9,6 +9,8 @@ import { AlertController } from '@ionic/angular';
   templateUrl: './listagem.page.html',
   styleUrls: ['./listagem.page.scss'],
 })
+
+
 export class ListagemPage implements OnInit {
 
   public posts:any;
@@ -53,8 +55,16 @@ export class ListagemPage implements OnInit {
     return await modal.present();
   }
 
-  async atualizarItem(post){
-    await this.apiService.sendPutRequest(post, post.id).subscribe((data)=>{
+
+
+  async edit(post){
+
+    let dadosPessoa = {
+      "name": "leo",
+      "job": "Pulicidade"
+    }
+
+   await this.apiService.sendPutRequest(dadosPessoa, post.id).subscribe((data)=>{
       console.log(data);
     }, error => {
       console.log(error);
@@ -62,17 +72,25 @@ export class ListagemPage implements OnInit {
 
     const alert = await this.alertController.create({
       header: 'Alerta!',
-      subHeader: 'Atualização API',
-      message: 'Dados atualizados com sucesso.',
+      subHeader: 'Atualizar API',
+      message: 'Dados atualizados ('+post.first_name+' '+ post.last_name+') com sucesso.',
       buttons: ['OK']
     });
 
+      // const alert = await this.alertController.create({
+      // header: 'Alerta!',
+      // subHeader: 'Formulário API',
+      // message: 'Dados editados ('+post.first_name+' '+ post.last_name+') com sucesso.',
+      // buttons: ['OK']
+      // });
 
-    await alert.present();
+      // await alert.present();
+  
   }
 
-  async deletarItem(post){
-    await this.apiService.sendDeleteRequest(post.id).subscribe((data)=>{
+    async delete(post){
+
+      await this.apiService.sendDeleteRequest(post.id).subscribe((data)=>{
       console.log(data);
     }, error => {
       console.log(error);
@@ -85,8 +103,17 @@ export class ListagemPage implements OnInit {
       buttons: ['OK']
     });
 
+      // const alert = await this.alertController.create({
+      // header: 'Alerta!',
+      // subHeader: 'Formulário API',
+      // message: 'Dados deletados com sucesso.',
+      // buttons: ['OK']
+      // });
 
-    await alert.present();
+      // await alert.present();
+
+      await alert.present();
+  
   }
 
   ngOnInit(){
